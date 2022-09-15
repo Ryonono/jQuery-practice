@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <!-- 文章に関する情報を指定する時に使用する→この文書の文字はUTF-8というデジタルデータ形式を使用するという意味 -->
+  <!-- ここが正しく記載されていないと、文字化けになる可能性がある -->
+  <meta charset="UTF-8">
+  <!-- ここでのcontent内容が、Googleの検索結果に出力されることになるから気をつけること -->
+  <meta name="description" content="jQuery Practice">
+  <title>jQuery Practice</title>
+  <!-- <link rel="stylesheet" href="./css/bootstrap.css"> -->
+  <link rel="stylesheet" href="./jQuery.css">
+  <!-- 必ず、Jqueryを読み込んでからbootstrapを読み込む（今回フォルダの中に入れているが、オンラインで呼び出す方法もある） -->
+  <!-- <script type="text/javascript" src="./js/jquery-3.6.0.js"></script>
+  <script type="text/javascript" src="./js/bootstrap.js"></script> -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+
+<body>
+
+  <main>
+
+    <h2>This is jQuery practice page.</h2>
+
+    <h4>No.1 『Hello,World』をアラート出力せよ</h4>
+    <button class="alert-on">Alert</button>
+
+    <h4>No.2 id名『q01』のテキストカラーを赤に変更せよ</h4>
+    <div id="q01">Red color</div>
+
+    <h4>id名『q02』のテキストカラーを青・背景色を黄色に変更せよ</h4>
+    <div id="q02">Blue color with bg-color yellow</div>
+
+    <h4>id名『q03』の空の段落にテキスト「エレン」を追加せよ</h4>
+    <div id="q03"></div>
+
+    <h4>id名『q04』「エレン」のテキストを「駆逐してやるッ!!!」に書き換えよ</h4>
+    <div id="q04">エレン</div>
+
+    <h4>id名『q05』「ときどきweb」の内容をリンクタグを含めた「ときどきweb」にhtml置換せよ</h4>
+    <div id="q05">ときどきweb</div>
+
+    <h4>id名「q06」のul要素にclass名「aaa」を追加せよ</h4>
+    <ul id="q06">
+      <li>Jquery</li>
+      <li>HTML</li>
+      <li>CSS</li>
+    </ul>
+
+    <h4>id名「q07」のul要素内のli要素だけを削除せよ</h4>
+    <ul id="q07">Yes
+      <li>NOT</li>
+      <li>NO</li>
+    </ul>
+
+    <h4>上記で指定したid名「q02」の装飾プロパティを取得して変数q02に代入し、文字の色の値（カラーコード）をid名「#q09」のp要素にテキスト出力せよ</h4>
+    <p id="q09"></p>
+
+    <h4>既にclass名「aaa」が付いたid名「#q10」のp要素をクリックしたらclass名を「aaa」→「bbb」に変更せよ</h4>
+    <h4>&問10のid名「#q10」のp要素テキストの先頭に「超平和バスターズ、」を追加せよ(前の文章は残したままで）</h4>
+    <h4>問10のid名「#q10」のp要素テキストの末尾に「ゆきあつ、つるこ、ぽっぽ」を追加せよ(前の記述は残したままで）</h4>
+    <p class="aaa" id="q10">change class name</p>
+
+
+    <h4>ul要素のliタグの前にliタグで『One』を追加せよ</h4>
+
+    <ul class="add-li">Number
+      <li>Two</li>
+      <li>Three</li>
+    </ul>
+
+
+
+
+
+  </main>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script>
+    $(".alert-on").click(function () {
+      alert("Hello World");
+    });
+    $("#q01").css("color", "red");
+    $("#q02").css({
+      color: "blue",
+      backgroundColor: "yellow"
+    });
+    $("#q03").text("エレン");
+    $("#q04").text("駆逐してやるッ!!!");
+    $("#q05").html("<a href=#>ときどきweb</a>");
+    $("#q06").addClass("aaa");
+    $("#q07").children().hide();
+    // $("#q07 li").remove();で実装するのが正しい答えらしい（うまくいってればOK)
+    var q02 = $("#q02").css("color");
+    $("#q09").text(q02);
+    $("#q10").click(function () {
+      $("#q10").addClass("bbb");
+      $("#q10").removeClass("aaa");
+      // 正解は、$(this).toggleClass("bbb");
+      $(this).prepend("超平和バスターズ、");
+      $(this).append("ゆきあつ、つるこ、ぽっぽ");
+    });
+    $(".add-li")
+  </script>
+
+</body>
+
+
+</html>
